@@ -1,8 +1,12 @@
+import Image from "next/image";
+
+import Logo from "../../public/assets/logo.png";
+
 export default function Home() {
   return (
     <main>
       <div>
-        <p>Hello World!</p>
+        <Image src={Logo} alt="Wallet App Logo" />
       </div>
     </main>
   );

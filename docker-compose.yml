@@ -9,6 +9,9 @@ services:
       - .:/app
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - db
 
   db:
     image: postgres
