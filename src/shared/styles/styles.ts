@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 
 export const Card = styled.div`
@@ -9,7 +11,7 @@ export const Card = styled.div`
 `;
 
 export const Content = styled.div`
-  min-height: calc(-165.8px + 100vh);
+  min-height: calc(-181px + 100vh);
   display: flex;
   justify-content: center;
   margin: 20px;

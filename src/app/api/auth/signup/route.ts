@@ -22,13 +22,6 @@ export async function POST(request: Request) {
 
   const { name, email, password, phone, taxNumber } = body;
 
-  if (!name || !email || !password || !phone || !taxNumber) {
-    return NextResponse.json(
-      { message: "Por favor, preencha todos os campos!" },
-      { status: 400 }
-    );
-  }
-
   const existingUser = await prisma.user.findFirst({
     where: {
       OR: [{ email }, { taxNumber }],

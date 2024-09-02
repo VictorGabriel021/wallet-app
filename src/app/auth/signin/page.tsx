@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useRouter } from "next/navigation";
 
 import { useState } from "react";
@@ -8,22 +10,19 @@ import { CardContainer, CardContent, Form } from "../styles";
 
 import { Button, CircularProgress } from "@mui/material";
 
-import { signupUser } from "@/services/userService";
+import { signinUser } from "@/services/userService";
 
 import InputCustom from "@/shared/components/InputCustom";
 
-import { formatCPF_CNPJ, formatPhone } from "@/shared/utils/formatters";
-
-import { schema } from "@/validations/auth/signupSchema";
+import { schema } from "@/validations/auth/signinSchema";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
 
-const SignUpPage = () => {
+const SignInPage = () => {
   const {
     control,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -33,23 +32,13 @@ const SignUpPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  const changeTaxNumberHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setValue("taxNumber", formatCPF_CNPJ(event));
-  };
-
-  const changePhoneHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue("phone", formatPhone(event.target.value));
-  };
-
   const onSubmit = async (data: any) => {
     setIsLoading(true);
-    const response = await signupUser(data);
+    const response = await signinUser(data);
     setIsLoading(false);
 
     if (response.success) {
-      router.push("/auth/signin");
+      router.push("/dashboard");
     }
   };
 
@@ -58,33 +47,10 @@ const SignUpPage = () => {
       <CardContent>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputCustom
-            name="name"
-            control={control}
-            label="Nome*"
-            errors={errors}
-          />
-
-          <InputCustom
             name="email"
             control={control}
             label="Email*"
             errors={errors}
-          />
-
-          <InputCustom
-            name="phone"
-            control={control}
-            label="Celular*"
-            errors={errors}
-            onChange={changePhoneHandler}
-          />
-
-          <InputCustom
-            name="taxNumber"
-            control={control}
-            label="CPF/CNPJ*"
-            errors={errors}
-            onChange={changeTaxNumberHandler}
           />
 
           <InputCustom
@@ -104,16 +70,16 @@ const SignUpPage = () => {
               isLoading && <CircularProgress color="inherit" size={18} />
             }
           >
-            Cadastrar
+            Entrar
           </Button>
 
-          <Button variant="text" onClick={() => router.push("/")}>
-            Login
-          </Button>
+          <Link href="/auth/signup" style={{ textAlign: "center" }}>
+            <Button variant="text">Criar nova conta</Button>
+          </Link>
         </Form>
       </CardContent>
     </CardContainer>
   );
 };
 
-export default SignUpPage;
+export default SignInPage;
