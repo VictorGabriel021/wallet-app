@@ -19,6 +19,7 @@ import { schema } from "@/validations/auth/signinSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
+import { ContentToCenter } from "@/shared/styles/styles";
 
 const SignInPage = () => {
   const {
@@ -43,42 +44,44 @@ const SignInPage = () => {
   };
 
   return (
-    <CardContainer>
-      <CardContent>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <InputCustom
-            name="email"
-            control={control}
-            label="Email*"
-            errors={errors}
-          />
+    <ContentToCenter>
+      <CardContainer>
+        <CardContent>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <InputCustom
+              name="email"
+              control={control}
+              label="Email*"
+              errors={errors}
+            />
 
-          <InputCustom
-            name="password"
-            type="password"
-            control={control}
-            label="Senha*"
-            errors={errors}
-            autoComplete="autoComplete"
-          />
+            <InputCustom
+              name="password"
+              type="password"
+              control={control}
+              label="Senha*"
+              errors={errors}
+              autoComplete="autoComplete"
+            />
 
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={isLoading}
-            endIcon={
-              isLoading && <CircularProgress color="inherit" size={18} />
-            }
-          >
-            Entrar
-          </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={isLoading}
+              endIcon={
+                isLoading && <CircularProgress color="inherit" size={18} />
+              }
+            >
+              Entrar
+            </Button>
 
-          <Link href="/auth/signup" style={{ textAlign: "center" }}>
-            <Button variant="text">Criar nova conta</Button>
-          </Link>
-        </Form>
-      </CardContent>
-    </CardContainer>
+            <Link href="/auth/signup" style={{ textAlign: "center" }}>
+              <Button variant="text">Criar nova conta</Button>
+            </Link>
+          </Form>
+        </CardContent>
+      </CardContainer>
+    </ContentToCenter>
   );
 };
 

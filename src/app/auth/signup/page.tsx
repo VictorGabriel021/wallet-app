@@ -12,13 +12,18 @@ import { signupUser } from "@/services/userService";
 
 import InputCustom from "@/shared/components/InputCustom";
 
-import { formatCPF_CNPJ, formatPhone } from "@/shared/utils/formatters";
+import {
+  formatCPF_CNPJ,
+  formatPhone,
+} from "@/shared/utils/formatters/documentsMask";
 
 import { schema } from "@/validations/auth/signupSchema";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
+
+import { ContentToCenter } from "@/shared/styles/styles";
 
 const SignUpPage = () => {
   const {
@@ -54,65 +59,67 @@ const SignUpPage = () => {
   };
 
   return (
-    <CardContainer>
-      <CardContent>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <InputCustom
-            name="name"
-            control={control}
-            label="Nome*"
-            errors={errors}
-          />
+    <ContentToCenter>
+      <CardContainer>
+        <CardContent>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <InputCustom
+              name="name"
+              control={control}
+              label="Nome*"
+              errors={errors}
+            />
 
-          <InputCustom
-            name="email"
-            control={control}
-            label="Email*"
-            errors={errors}
-          />
+            <InputCustom
+              name="email"
+              control={control}
+              label="Email*"
+              errors={errors}
+            />
 
-          <InputCustom
-            name="phone"
-            control={control}
-            label="Celular*"
-            errors={errors}
-            onChange={changePhoneHandler}
-          />
+            <InputCustom
+              name="phone"
+              control={control}
+              label="Celular*"
+              errors={errors}
+              onChange={changePhoneHandler}
+            />
 
-          <InputCustom
-            name="taxNumber"
-            control={control}
-            label="CPF/CNPJ*"
-            errors={errors}
-            onChange={changeTaxNumberHandler}
-          />
+            <InputCustom
+              name="taxNumber"
+              control={control}
+              label="CPF/CNPJ*"
+              errors={errors}
+              onChange={changeTaxNumberHandler}
+            />
 
-          <InputCustom
-            name="password"
-            type="password"
-            control={control}
-            label="Senha*"
-            errors={errors}
-            autoComplete="autoComplete"
-          />
+            <InputCustom
+              name="password"
+              type="password"
+              control={control}
+              label="Senha*"
+              errors={errors}
+              autoComplete="autoComplete"
+            />
 
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={isLoading}
-            endIcon={
-              isLoading && <CircularProgress color="inherit" size={18} />
-            }
-          >
-            Cadastrar
-          </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={isLoading}
+              endIcon={
+                isLoading && <CircularProgress color="inherit" size={18} />
+              }
+            >
+              Cadastrar
+            </Button>
 
-          <Button variant="text" onClick={() => router.push("/")}>
-            Login
-          </Button>
-        </Form>
-      </CardContent>
-    </CardContainer>
+            <Button variant="text" onClick={() => router.push("/")}>
+              Login
+            </Button>
+          </Form>
+        </CardContent>
+      </CardContainer>
+    </ContentToCenter>
   );
 };
 

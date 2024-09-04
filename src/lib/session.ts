@@ -42,6 +42,13 @@ export async function createSession(userId: string) {
     sameSite: "lax",
     path: "/",
   });
+
+  cookies().set("userId", userId, {
+    secure: true,
+    expires: expiresAt,
+    sameSite: "lax",
+    path: "/",
+  });
 }
 
 export function deleteSession() {

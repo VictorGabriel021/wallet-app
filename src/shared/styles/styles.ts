@@ -12,7 +12,9 @@ export const Card = styled.div`
 
 export const Content = styled.div`
   min-height: calc(-181px + 100vh);
-  display: flex;
-  justify-content: center;
   margin: 20px;
+`;
+
+export const ContentToCenter = styled.div`
+  height: calc(-161px + 100vh);
 `;

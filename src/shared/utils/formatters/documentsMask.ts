@@ -29,13 +29,6 @@ export const formatForNumber = (value: string) => {
   return value.replace(/\D/g, "");
 };
 
-export const formatToBRL = (amount: number) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(amount);
-};
-
 export const formatCPF_CNPJ = (event: React.ChangeEvent<HTMLInputElement>) => {
   const regex = /^[0-9\b/./-]+$/;
   const numberLength = event.target.value.replace(/\D/g, "").length;

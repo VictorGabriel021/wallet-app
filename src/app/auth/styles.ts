@@ -6,15 +6,13 @@ export const CardContainer = styled.div`
   display: flex;
   align-items: center;
   width: 380px;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 export const CardContent = styled(Card)`
   max-width: 380px;
   height: fit-content;
-
-  @media (min-width: 460px) {
-    margin: 0 auto;
-  }
 `;
 
 export const Form = styled.form`

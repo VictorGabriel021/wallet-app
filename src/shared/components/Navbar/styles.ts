@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Image from "next/image";
+
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
@@ -9,11 +11,15 @@ export const Header = styled.header`
   color: #fff;
   padding: 25px 40px;
 
-  @media (max-width: 550px) {
+  @media (max-width: 400px) {
     flex-direction: column;
-    gap: 15px;
-    padding: 20px 0;
   }
+`;
+
+export const StyledImage = styled(Image)`
+  width: 100%;
+  height: auto;
+  max-width: 200px;
 `;
 
 export const NavbarContainer = styled.nav`

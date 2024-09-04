@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 import { schema } from "@/validations/auth/signupSchema";
 
-import { formatForNumber } from "@/shared/utils/formatters";
+import { formatForNumber } from "@/shared/utils/formatters/documentsMask";
 
 const prisma = new PrismaClient();
 
