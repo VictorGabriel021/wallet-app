@@ -21,15 +21,19 @@ docker network inspect bridge
 
 ### 5. Build e execução do Docker
 docker-compose build
+
 docker-compose up
 
 ### 6. Executar migrações do Prisma
 docker exec -it wallet-app sh
+
 apk add --no-cache postgresql-client
+
 npx prisma migrate dev --name init
 
 ### 7. Testar conexão com o banco de dados
 psql -h db -U your_user -d your_db
+
 
 Substitua your_user e your_db pelos valores corretos que você configurou no arquivo .env.
 
