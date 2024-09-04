@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosApi from "./axios";
 
 import Cookies from "js-cookie";
 
@@ -37,7 +37,7 @@ export const depositFinance = async (
   try {
     const userId = Cookies.get("userId");
 
-    const response = await axios.post("/api/finance/deposit", {
+    const response = await axiosApi.post("/finance/deposit", {
       ...body,
       userId,
       type: IOperationEnum.DEPOSIT,
@@ -65,7 +65,7 @@ export const transferFinance = async (
 ): Promise<IFinanceResponse> => {
   try {
     const senderId = Cookies.get("userId");
-    const response = await axios.post("/api/finance/transfer", {
+    const response = await axiosApi.post("/finance/transfer", {
       ...body,
       senderId,
       type: IOperationEnum.TRANSFER,
@@ -92,7 +92,7 @@ export const reverseFinance = async (
   body: IBodyReverseFinance
 ): Promise<IFinanceResponse> => {
   try {
-    const response = await axios.post("/api/finance/reverse", body);
+    const response = await axiosApi.post("/finance/reverse", body);
 
     SuccessAlert({
       label: response.data.message,
@@ -115,7 +115,7 @@ export const getAllTransactionFinance = async (): Promise<IFinanceResponse> => {
   try {
     const userId = Cookies.get("userId");
 
-    const response = await axios.get("/api/finance/transaction", {
+    const response = await axiosApi.get("/finance/transaction", {
       params: {
         userId,
       },

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosApi from "./axios";
 
 import { FailAlert, SuccessAlert } from "@/shared/utils/toastyAlerts";
 
@@ -22,7 +22,7 @@ export const getUserInfo = async (): Promise<ISignupResponse> => {
   try {
     const userId = Cookies.get("userId");
 
-    const response = await axios.get("/api/auth/userInfo", {
+    const response = await axiosApi.get("/auth/userInfo", {
       params: {
         userId,
       },
@@ -45,7 +45,7 @@ export const signupUser = async (
   body: IBodyUserSignup
 ): Promise<ISignupResponse> => {
   try {
-    const response = await axios.post("/api/auth/signup", body);
+    const response = await axiosApi.post("/auth/signup", body);
 
     SuccessAlert({
       label: response.data.message,
@@ -68,7 +68,7 @@ export const signinUser = async (
   body: IBodyUserSignup
 ): Promise<ISignupResponse> => {
   try {
-    const response = await axios.post("/api/auth/signin", body);
+    const response = await axiosApi.post("/auth/signin", body);
 
     return { success: true, data: response.data.user };
   } catch (error: any) {
@@ -85,7 +85,7 @@ export const signinUser = async (
 
 export const getSession = async (): Promise<ISignupResponse> => {
   try {
-    const response = await axios.get("/api/auth/check");
+    const response = await axiosApi.get("/auth/check");
     return {
       success: true,
       data: { isAuthenticated: response.data.isAuthenticated },
@@ -100,7 +100,7 @@ export const getSession = async (): Promise<ISignupResponse> => {
 
 export const deleteSession = async (): Promise<ISignupResponse> => {
   try {
-    await axios.delete("/api/auth/logout");
+    await axiosApi.delete("/auth/logout");
 
     return { success: true };
   } catch (error: any) {
