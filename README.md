@@ -6,6 +6,7 @@ Este é um projeto de carteira financeira desenvolvido em Next.js, Node.js, Pris
 
 ### 1. Clone o repositório
 git clone https://github.com/VictorGabriel021/wallet-app.git
+
 cd wallet-app/
 
 ### 2. Instale as dependências
